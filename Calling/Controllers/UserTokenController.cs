@@ -1,7 +1,6 @@
 ﻿// © Microsoft Corporation. All rights reserved.
 
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Communication;
@@ -37,7 +36,7 @@ namespace Calling
                     await _client.IssueTokenAsync(user, scopes: new[] { CommunicationTokenScope.VoIP });
                 string token = tokenResponse.Value.Token;
                 DateTimeOffset expiresOn = tokenResponse.Value.ExpiresOn;
-                return this.Ok(tokenResponse);
+                return this.Ok(tokenResponse.Value);
             } 
             catch (RequestFailedException ex)
             {
